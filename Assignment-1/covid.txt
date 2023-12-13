@@ -1,0 +1,14 @@
+10- Fever 
+11- cough 
+12- tiredness
+13- loss of taste
+14- sore throat
+15- headache
+16- body aches
+17- diarrhea
+18- skin rash
+19- fingers discoloration
+20- red or irritated eyes
+21- shortness of breath
+22- confusion
+23- chest pains
