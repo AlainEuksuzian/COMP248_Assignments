@@ -21,27 +21,32 @@ public class A2_Q1 {
          System.out.println("the file has not been found, code has to end");
          System.exit(0);
       }
-      
+
       System.out.println("the covid symtoms and their respective numbers are:");
-      convertToMap(); /*this method should always be called before printSymptoms() */
+      convertToMap(); /* <- this method should always be called before printSymptoms() */
       printSymptoms();
-
       inputStream.close();
-
-      int symptomCode = Integer.parseInt(getUserInput("enter a symtom Code: ")); /*gets user code for symtom */
-      
       
       /*
        * as long as user input is invalid, code will continue asking for valid input, if valid will out symptoms
        */
-        while(!symptomSeverity(symptomCode)){
-         symptomCode = Integer.parseInt(getUserInput("enter a symtom Code: "));
-         if (symptomSeverity(symptomCode)){
-            break;
-         }
+        int symptomCode = Integer.parseInt(getUserInput("enter a symtom Code: ")); /*gets user code for symtom */
+        boolean correctSymptomInput = symptomSeverity(symptomCode);
+
+        while(!correctSymptomInput){
+         symptomCode = Integer.parseInt(getUserInput("the code entered is invalid, please try again: "));
+
+         if (symptomCode >= 10 && symptomCode <= 23 || (symptomCode <= 9 && symptomCode >= -128)){
+           correctSymptomInput = true;
+            symptomSeverity(symptomCode);
+            
+          }
         }
 
-      System.out.println(covidSymptoms.get(symptomCode));
+        if (symptomCode >= 10 && symptomCode <= 23){
+         System.out.println(covidSymptoms.get(symptomCode));
+        }
+      
    }
 
    /**
@@ -53,9 +58,9 @@ public class A2_Q1 {
       while(inputStream.hasNext()){
          String line = inputStream.nextLine();
          int indexSeperator = line.indexOf("-");
-         int num = Integer.parseInt(line.substring(0, indexSeperator));
-         String remSymp = line.substring(indexSeperator+2);
-         covidSymptoms.put(num, remSymp);
+         int covidNumber = Integer.parseInt(line.substring(0, indexSeperator));
+         String remainingSymptoms = line.substring(indexSeperator+2);
+         covidSymptoms.put(covidNumber, remainingSymptoms);
       }
    }
 
@@ -83,7 +88,7 @@ public class A2_Q1 {
 
    /**
     * gets user code(symptom) argument and checks for validity
-    * @param code
+    * @param code integer for symptom
     * @return True if code input value, false otherwise
     */
    public static boolean symptomSeverity(int code){
@@ -102,8 +107,9 @@ public class A2_Q1 {
          messageSeverity = "Critical Symptoms";
          correctInput = true;
       }
-      else {
-         messageSeverity = "the number entered is not in list";
+      else if ((code >= 24 && code <= 128) || (code <= 9 && code >= -128)){
+         messageSeverity = "No Obvious Symptoms";
+         correctInput = true;
       }
       System.out.println(messageSeverity);
       return correctInput;
