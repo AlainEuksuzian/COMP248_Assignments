@@ -11,6 +11,7 @@ public class A2_Q1 {
    private  static HashMap<Integer, String> covidSymptoms = new HashMap<>();
    public static void main(String[] args) {
 
+
       /*
        * tries to connect to text file : like 17 to 23
        */
