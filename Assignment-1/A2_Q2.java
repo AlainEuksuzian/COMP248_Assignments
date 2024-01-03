@@ -31,7 +31,10 @@ public class A2_Q2 {
         System.exit(0);
        }
 
-       System.out.println(getYvalue(day, time));
+       double yValue = getYvalue(day,time);
+       double Zvalue = getZvalue(yValue);
+       
+       System.out.printf("Value of Prototype Learning Function, Z is: %.3f", Zvalue );
 
 
     }
@@ -121,6 +124,15 @@ public class A2_Q2 {
         }
         return formulas.get(day)[time_index];
 
+    }
+    /**
+     * computes z value with omega instance
+     * @param yValue
+     * @return computes final Z value
+     */
+    public static double getZvalue(double yValue){
+        double valueZ = OMEGA * yValue;
+        return valueZ; 
     }
 
     
