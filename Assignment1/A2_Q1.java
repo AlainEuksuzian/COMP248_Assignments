@@ -16,7 +16,7 @@ public class A2_Q1 {
        * tries to connect to text file : like 17 to 23
        */
       try {
-         inputStream = new Scanner(new FileInputStream("C:\\Users\\Alain E\\Desktop\\JAVA\\comp248\\Assignment-1\\covid.txt"));
+         inputStream = new Scanner(new FileInputStream("C:\\Users\\Alain E\\Desktop\\vscode-files\\JAVA\\comp248\\Assignment1\\covid.txt"));
       }
       catch (FileNotFoundException e) {
          System.out.println("the file has not been found, code has to end");
@@ -44,6 +44,9 @@ public class A2_Q1 {
           }
         }
 
+  // This code is checking if the user input for the symptom code is within the range of 10 to 23. If
+  // it is, it retrieves the corresponding symptom from the `covidSymptoms` HashMap using the `get()`
+  // method and prints it to the console.
         if (symptomCode >= 10 && symptomCode <= 23){
          System.out.println(covidSymptoms.get(symptomCode));
         }

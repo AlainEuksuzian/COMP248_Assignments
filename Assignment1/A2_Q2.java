@@ -9,10 +9,15 @@ public class A2_Q2 {
     private static Scanner inputStream = null;
     private static final double OMEGA = 0.567143; 
     private static Scanner keyboard = new Scanner(System.in);
+
+    /**
+     * The main function reads a text file, prompts the user for input, validates the input, calculates
+     * the values of y and z, and prints the value of z.
+     */
     public static void main(String[] args) {
         // line 13 to 20 connects to a text file, if not found, program ends
         try {
-            inputStream = new Scanner(new FileInputStream("C:\\Users\\Alain E\\Desktop\\JAVA\\comp248\\Assignment-1\\learning_formula.txt"));
+            inputStream = new Scanner(new FileInputStream("C:\\Users\\Alain E\\Desktop\\vscode-files\\JAVA\\comp248\\Assignment1\\learning_formula.txt"));
         }
         catch (FileNotFoundException e){
             System.out.println(e.getMessage());
@@ -72,21 +77,26 @@ public class A2_Q2 {
             System.out.println();
         }
     }
+
     /**
-     * subroutine to get user keyboard input
-     * @param message prints a message to get user input
-     * @return a line of string the user entered
+     * The function "getUserInput" in Java prompts the user with a message and returns their input as a
+     * string.
+     * 
+     * @param message A string message that will be displayed to the user as a prompt for input.
+     * @return The method is returning a String value.
      */
     public static String getUserInput(String message){
         System.out.print(message);
         return keyboard.nextLine(); 
-
     }
 
-    /**
-     * subroutine to get weekday and day-night input 
-     * @return an array where index[0] is weekday and index[1] is day-light or night-time
-     */
+    
+/**
+ * The function `getUserDateTimeInputs` takes user input for a weekday and time in one sentence,
+ * converts it to lowercase, splits it into separate words, and returns an array of the words.
+ * 
+ * @return The method is returning an array of strings.
+ */
     public static String[] getUserDateTimeInputs(){
         String weekdayTimeInput  = getUserInput("enter weekday and time in one sentence:  ");
         String weekdayTimeInputLowered = weekdayTimeInput.toLowerCase();
@@ -94,12 +104,14 @@ public class A2_Q2 {
         return dayTimeSeperator;
     }
 
-    /**
-     * checks if user inputs for day of week and time of day is correct
-     * @param day
-     * @param time
-     * @return true if day is a key of map and if time is "day-light" or "night-time" , FALSE otherwise
-     */    
+   
+/**
+ * The function checks if the input day and time are valid based on certain conditions.
+ * 
+ * @param day A string representing the day of the week.
+ * @param time The time parameter is a string that represents either "day-light" or "night-time".
+ * @return The method is returning a boolean value.
+ */
     public static boolean inputValidator(String day, String time){
         if ((!formulas.containsKey(day))){
             return false;
